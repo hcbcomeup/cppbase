@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CPPBASE_NONMOVABLE_HPP
 #define CPPBASE_NONMOVABLE_HPP
 

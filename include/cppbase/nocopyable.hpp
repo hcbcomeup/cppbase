@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CPPBASE_NONCOPYABLE_HPP
 #define CPPBASE_NONCOPYABLE_HPP
 

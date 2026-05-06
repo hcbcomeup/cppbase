@@ -9,14 +9,7 @@
 #include <future>
 #include "circular_queue.hpp"
 #include "err_code.hpp"
-#include "config.hpp"
-
-#ifdef CPPBASE_IS_LINUX
-    #include "pthread.h"
-#elif CPPBASE_IS_WINDOWS
-    #include <process.h>
-    #include <windows.h>
-#endif
+#include "utility.hpp"
 
 namespace cppbase {
 
@@ -55,11 +48,7 @@ public:
             std::thread thread([this]
                                { Run(); });
             std::string name = threadName + std::to_string(i);
-#ifdef CPPBASE_IS_LINUX
-            pthread_setname_np(thread.native_handle(), name.c_str());
-#elif CPPBASE_IS_WINDOWS
-            SetThreadDescription(thread.native_handle(), name.c_str());
-#endif
+            Utility::SetThreadName(thread.native_handle(), name);
             works_.emplace_back(std::move(thread));
         }
 

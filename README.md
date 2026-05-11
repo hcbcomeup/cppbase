@@ -22,9 +22,9 @@ A lightweight, dependency-free, cross-platform C++17 basic library with thread p
 ### Include in your project
 
 ```cpp
-#include "cppbase/threadpool.hpp"
-#include "cppbase/timermgr.hpp"
-#include "cppbase/objectpool.hpp"
+#include "cppbase/thread_pool.hpp"
+#include "cppbase/timer_mgr.hpp"
+#include "cppbase/object_pool.hpp"
 #include "cppbase/circular_queue.hpp"
 #include "cppbase/mpmc_blocking_queue.hpp"
 ```
@@ -32,7 +32,7 @@ A lightweight, dependency-free, cross-platform C++17 basic library with thread p
 ### ThreadPool Example
 
 ```cpp
-#include "cppbase/threadpool.hpp"
+#include "cppbase/thread_pool.hpp"
 
 cppbase::ThreadPool pool;
 pool.Start(4, 100);  // 4 threads, queue size 100
@@ -53,7 +53,7 @@ int result = future.get();  // result = 42
 ### TimerMgr Example
 
 ```cpp
-#include "cppbase/timermgr.hpp"
+#include "cppbase/timer_mgr.hpp"
 
 auto& mgr = cppbase::TimerMgr::Instance();
 
@@ -85,7 +85,7 @@ mgr.DelTimer(timer);
 ### ObjectPool Example
 
 ```cpp
-#include "cppbase/objectpool.hpp"
+#include "cppbase/object_pool.hpp"
 
 struct MyObject
 {
@@ -156,9 +156,9 @@ make
 ```bash
 ctest --output-on-failure
 # Or run individual tests
-./test/threadpool_test
-./test/timermgr_test
-./test/objectpool_test
+./test/thread_pool_test
+./test/timer_mgr_test
+./test/object_pool_test
 ./test/circular_queue_test
 ./test/mpmc_queue_test
 ```
@@ -167,9 +167,9 @@ ctest --output-on-failure
 
 | Component | Header | Description |
 |-----------|--------|-------------|
-| ThreadPool | `threadpool.hpp` | Thread pool with task queue and future |
-| TimerMgr | `timermgr.hpp` | Timer manager with one-shot and periodic timers |
-| ObjectPool | `objectpool.hpp` | Memory pool for object reuse |
+| ThreadPool | `thread_pool.hpp` | Thread pool with task queue and future |
+| TimerMgr | `timer_mgr.hpp` | Timer manager with one-shot and periodic timers |
+| ObjectPool | `object_pool.hpp` | Memory pool for object reuse |
 | CircularQueue | `circular_queue.hpp` | Lock-free SPSC circular queue |
 | MpmcBlockingQueue | `mpmc_blocking_queue.hpp` | Multi-producer multi-consumer queue |
 | NoCopyable | `nocopyable.hpp` | Base class for non-copyable objects |
